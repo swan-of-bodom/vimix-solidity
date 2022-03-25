@@ -28,9 +28,12 @@ I have included my own configurations below for anyone to get started quickly.
 
 ## Showcase 
 
-### Lints at runtime with Solhint and Solc + autofix with prettier-solidity
+### Lints at runtime with Solhint and Solc + autofix with prettier-solidity (<C-y>)
+  
 ![formatandlint](https://user-images.githubusercontent.com/97303883/160021496-6a94be63-b744-4867-9359-08d35152bf0d.gif)
-### Compile the whole project with Hardhat
+
+### Compile the whole project with Hardhat (make)
+
 ![compile](https://user-images.githubusercontent.com/97303883/160021529-693e2468-2d18-47a1-9e97-82e1ae712280.gif)
 
 ## Requirements
