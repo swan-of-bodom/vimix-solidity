@@ -8,7 +8,7 @@ I have included my own configurations below for anyone to get started quickly.
 
 ## Features
 
-- Very light and vim-like speed while writing solidity with important features from Remix. Tested extensively with Solidity 0.7 and up to 0.8.9.
+- Very light and fast while keeping all the core functionalities of Remix. Tested extensively with Solidity 0.7 and up to 0.8.9.
 
 - Hardhat compiling without having to leave the text editor, outputing errors in Vim directly.
 
