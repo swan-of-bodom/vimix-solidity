@@ -1,4 +1,4 @@
-# Vimix: Ethereum Remix in NeoVim!
+# Vimix: Ethereum Remix in Vim
 
 Making NeoVim feel as close as possible to Ethereum's Remix, without bloating it or missing any core functions of Remix.
 
@@ -24,7 +24,7 @@ I have included my own configurations below for anyone to get started quickly.
 
 ![image](https://user-images.githubusercontent.com/97303883/160103725-7064c79f-c831-449a-b701-7b9b83cb7678.png)
 
-**Important**: Due to the way ALE works, it requires for solc files to be saved to show linting/compiler errors. To fix this, the ftplugin has a TextChanged, TextChangedI * update auto command which writes the file as you modify. This only enables it for solidity files.
+**Important**: Due to the way ALE works with Solc, it requires for .sol files to be saved BEFORE linting/compiling errors. To fix this, the ftplugin has an auto command which writes the file as you modify. This only enables it for solidity files.
 
 ## Showcase 
 
