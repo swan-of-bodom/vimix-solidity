@@ -16,11 +16,10 @@ I have included my own configurations below for anyone to get started quickly.
 
 - Quickfix buffer for compiler errors and location lists for linting errors.
 
-🟡 Solhint syntax warnings marked in **yellow** 
+🟨 Solhint syntax warnings marked in **yellow** 
+🟥 Solc compiler errors marked in **red** 
 
 ![image](https://user-images.githubusercontent.com/97303883/160103484-143eb1a8-3920-4fb3-bc93-b6c638ec7a5c.png)
-
-🟥 Solc compiler errors marked in **red** 
 
 ![image](https://user-images.githubusercontent.com/97303883/160103725-7064c79f-c831-449a-b701-7b9b83cb7678.png)
 
