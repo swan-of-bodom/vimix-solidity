@@ -26,6 +26,15 @@ I have included my own configurations below for anyone to get started quickly.
 
 **Important**: Due to the way ALE works with Solc, it requires for .sol files to be saved BEFORE linting/compiling errors. To fix this, the ftplugin has an auto command which writes the file as you modify. This only enables it for solidity files.
 
+## Requirements
+
+* [Hardhat](https://hardhat.org/) - To compile the whole project. The reason to use hardhat's compiler here is to be able to compile the whole project and not just the file with solc. Uses the quickfix buftype.
+* [vim-solidity](https://github.com/TovarishFin/vim-solidity) - For syntax keyword highlights.
+* [Solc-Select](https://github.com/crytic/solc-select) - Solc version manager to change according to each project. Since ALE uses the solc executable it will adjust to whichever solc-select version you are using and which pragma you declare. Uses Location List buffer.
+* [ALE](https://github.com/dense-analysis/ale/) - For linting at runtime with solhint and solc. Uses Location List buffer. 
+* [Prettier-Solidity](https://github.com/prettier-solidity/prettier-plugin-solidity) - For displaying format warnings. 
+* [Neoformat](https://github.com/sbdchd/neoformat) - For auto-fixing prettier's warnings.
+ 
 ## Showcase 
 
 ### Lints at runtime with Solhint and Solc + autofix with Neoformat (prettier-solidity).
@@ -35,15 +44,6 @@ I have included my own configurations below for anyone to get started quickly.
 ### Compile and run Tests with Hardhat without leaving Vim
 
 ![compile](https://user-images.githubusercontent.com/97303883/160021529-693e2468-2d18-47a1-9e97-82e1ae712280.gif)
-
-## Requirements
-
-* [Hardhat](https://hardhat.org/) - To compile the whole project. The reason to use hardhat's compiler here is to be able to compile the whole project and not just the file with solc. Uses the quickfix buftype.
-* [vim-solidity](https://github.com/TovarishFin/vim-solidity) - For syntax keyword highlights.
-* [Solc-Select](https://github.com/crytic/solc-select) - Solc version manager to change according to each project. Since ALE uses the solc executable it will adjust to whichever solc-select version you are using and which pragma you declare. Uses Location List buffer.
-* [ALE](https://github.com/dense-analysis/ale/) - For linting at runtime with solhint and solc. Uses Location List buffer. 
-* [Prettier-Solidity](https://github.com/prettier-solidity/prettier-plugin-solidity) - For displaying format warnings. 
-* [Neoformat](https://github.com/sbdchd/neoformat) - For auto-fixing prettier's warnings.
 
 ## Installation 
 
@@ -76,7 +76,7 @@ and put this in your .vimrc:
 
 ## Configuration
 
-In Solidity project folder make sure to install prettier solidity plugin and to create a solhint.json file
+In Solidity project folder make sure to install prettier solidity plugin and to create a .solhint.json file
 
 `npm install --save-dev prettier prettier-plugin-solidity`
 
