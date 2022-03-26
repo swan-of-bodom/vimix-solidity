@@ -10,17 +10,17 @@ I have included my own configurations below for anyone to get started quickly.
 
 - Very light and fast while keeping all the core functionalities of Remix. Tested extensively with Solidity 0.7 and up to 0.8.9.
 
-- Hardhat compiling without having to leave the text editor, outputing errors in Vim directly.
+- Compile and test with Hardhat without leaving Vim.
+
+![2022-03-26_14-08](https://user-images.githubusercontent.com/97303883/160250270-bc40e75e-1158-424d-bb03-cf8345f3e146.png)
 
 - Quickfix buffer for compiler errors and location lists for linting errors.
 
-- ftdetect and ftplugin to only enable specific aucmds for solidity (**red important below**)
-
-- Solhint and Prettier warnings marked in yellow and easy to see while you type
+🟡 Solhint syntax warnings marked in **yellow** 
 
 ![image](https://user-images.githubusercontent.com/97303883/160103484-143eb1a8-3920-4fb3-bc93-b6c638ec7a5c.png)
 
-- Hardhat compiler errors marked in red and easy to see while you type
+🟥 Solc compiler errors marked in **red** 
 
 ![image](https://user-images.githubusercontent.com/97303883/160103725-7064c79f-c831-449a-b701-7b9b83cb7678.png)
 
@@ -28,11 +28,11 @@ I have included my own configurations below for anyone to get started quickly.
 
 ## Showcase 
 
-### Lints at runtime with Solhint and Solc + autofix with prettier-solidity (<C-y>)
-  
+### Lints at runtime with Solhint and Solc + autofix with Neoformat (prettier-solidity).
+ 
 ![formatandlint](https://user-images.githubusercontent.com/97303883/160021496-6a94be63-b744-4867-9359-08d35152bf0d.gif)
 
-### Compile the whole project with Hardhat (make)
+### Compile and run Tests with Hardhat without leaving Vim
 
 ![compile](https://user-images.githubusercontent.com/97303883/160021529-693e2468-2d18-47a1-9e97-82e1ae712280.gif)
 
@@ -70,13 +70,13 @@ Plug 'TovarishFin/vim-solidity'
 
 `Plug '0xhyoga/vimix-solidity'`
 
-and enable ftplugin on .vimrc
+and put this in your .vimrc:
 
 `filetype plugin on`
 
 ## Configuration
 
-In project folder make sure to install prettier solidity plugin and to create a solhint.json file
+In Solidity project folder make sure to install prettier solidity plugin and to create a solhint.json file
 
 `npm install --save-dev prettier prettier-plugin-solidity`
 
@@ -140,7 +140,7 @@ let g:ale_sign_column_always = 1
 let g:ale_sign_offset = 1000000
 
 let g:ale_sign_error = '■'
-let g:ale_sign_info = '■'
+let g:ale_sign_info = 💡
 let g:ale_sign_warning = '■'
 
 highlight ALEWarningSign guifg=LightGoldenrod1
@@ -152,9 +152,11 @@ let g:ale_warn_about_trailing_whitespace = 1
 let g:ale_sign_highlight_linenrs = 1
 
 "no go to previous error or warning
+
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 
 "no go to next error or warning
+
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 augroup quickfix
@@ -163,5 +165,6 @@ augroup quickfix
 augroup END
 
 "replace with own keybind  
+
 nmap <C-y> :Neoformat <CR>
 ```
