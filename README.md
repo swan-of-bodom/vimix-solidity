@@ -6,6 +6,8 @@ Vimix is a combination of plugins that work well with NeoVim/Vim and Solidity (0
 
 I have included my own configurations below for anyone to get started quickly.
 
+If you find any errors or anything to add please let me know! 
+
 ## Showcase 
 
 Fix all format errors automatically, show function tags, compile, test and coverage with Hardhat. All without leaving Vim!
@@ -18,17 +20,18 @@ Fix all format errors automatically, show function tags, compile, test and cover
 
 - Compile the whole project with Hardhat without leaving Vim.
 
-- Solc compiler errors 🟥 and Solhint/Prettier syntax warnings 🟨, all at runtime.
+- Runtime Solc compiler errors 🟥 and Solhint/Prettier syntax warnings 🟨. Scroll through each one with <C-j> and <C-k>
 
+![image](https://user-images.githubusercontent.com/97303883/160899340-825e77fa-3bfa-479c-a68e-68b58d394e03.png)
 ![image](https://user-images.githubusercontent.com/97303883/160895526-93f9706f-b293-49fd-8031-acd4ee4a508e.png)
 
-- Fix all solhint/prettier warnings without leaving Vim.
+- Fix all solhint/prettier warnings with Neoformat <C-l>.
 
-- Customized quickfix window to show Hardhat Test/Coverage output
+- Customized quickfix window to show Hardhat Test and Coverage outputs
 
-![image](https://user-images.githubusercontent.com/97303883/160895306-e1621e4d-fce1-4381-b073-572c4f3008d0.png)
+![image](https://user-images.githubusercontent.com/97303883/160899744-64b7a33c-41cd-44bf-92c0-e099eef7be77.png)
 
-- CTags to show functions and quickly go through each one.
+- CTags to show functions and quickly go through each one. Scroll through each one with <C-b> and <C-n>
 
 **Important**: Due to the way ALE works with Solc, it requires for .sol files to be saved BEFORE linting/compiling errors. To fix this, the ftplugin has an auto command which writes the file as you modify. This only enables it for solidity files.
 
@@ -193,3 +196,5 @@ let g:tagbar_type_solidity = {
         \ 'f:Functions',
     \ ]
 \ }
+ 
+ Tagbar should automatically pick up the tags you have created :)
