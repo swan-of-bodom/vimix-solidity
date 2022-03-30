@@ -1,4 +1,4 @@
-# Vimix: Ethereum Remix in NeoVim!
+# Vimix: Ethereum Remix in Vim
 
 Making NeoVim feel as close as possible to Ethereum's Remix, without bloating it or missing any core functions of Remix.
 
@@ -6,42 +6,38 @@ Vimix is a combination of plugins that work well with NeoVim/Vim and Solidity (0
 
 I have included my own configurations below for anyone to get started quickly.
 
-## Features
-
-- Very light and vim-like speed while writing solidity with important features from Remix. Tested extensively with Solidity 0.7 and up to 0.8.9.
-
-- Hardhat compiling without having to leave the text editor, outputing errors in Vim directly.
-
-- Quickfix buffer for compiler errors and location lists for linting errors.
-
-- ftdetect and ftplugin to only enable specific aucmds for solidity (**red important below**)
-
-- Solhint and Prettier warnings marked in yellow and easy to see while you type
-
-![image](https://user-images.githubusercontent.com/97303883/160103484-143eb1a8-3920-4fb3-bc93-b6c638ec7a5c.png)
-
-- Hardhat compiler errors marked in red and easy to see while you type
-
-![image](https://user-images.githubusercontent.com/97303883/160103725-7064c79f-c831-449a-b701-7b9b83cb7678.png)
-
-**Important**: Due to the way ALE works, it requires for solc files to be saved to show linting/compiler errors. To fix this, the ftplugin has a TextChanged, TextChangedI * update auto command which writes the file as you modify. This only enables it for solidity files.
-
 ## Showcase 
 
-### Lints at runtime with Solhint and Solc + autofix with prettier-solidity
-![formatandlint](https://user-images.githubusercontent.com/97303883/160021496-6a94be63-b744-4867-9359-08d35152bf0d.gif)
-### Compile the whole project with Hardhat
-![compile](https://user-images.githubusercontent.com/97303883/160021529-693e2468-2d18-47a1-9e97-82e1ae712280.gif)
+Fix all format errors automatically, show function tags, compile, test and coverage with Hardhat. All without leaving Vim!
+
+![Neoformat+Sol cover](https://user-images.githubusercontent.com/97303883/160896058-9e10f2f0-ef69-417a-b20a-a5214760228f.gif)
+
+## Features
+
+- Very light and fast while keeping all the core functionalities of Remix. Tested extensively with Solidity 0.7 and up to 0.8.9.
+
+- Compile the whole project with Hardhat without leaving Vim.
+
+- Solc compiler errors 🟥 and Solhint/Prettier syntax warnings 🟨, all at runtime.
+
+![image](https://user-images.githubusercontent.com/97303883/160895526-93f9706f-b293-49fd-8031-acd4ee4a508e.png)
+
+- Fix all solhint/prettier warnings without leaving Vim.
+
+- Customized quickfix window to show Hardhat Test/Coverage output
+
+![image](https://user-images.githubusercontent.com/97303883/160895306-e1621e4d-fce1-4381-b073-572c4f3008d0.png)
+
+- CTags to show functions and quickly go through each one.
+
+**Important**: Due to the way ALE works with Solc, it requires for .sol files to be saved BEFORE linting/compiling errors. To fix this, the ftplugin has an auto command which writes the file as you modify. This only enables it for solidity files.
 
 ## Requirements
 
 * [Hardhat](https://hardhat.org/) - To compile the whole project. The reason to use hardhat's compiler here is to be able to compile the whole project and not just the file with solc. Uses the quickfix buftype.
-* [vim-solidity](https://github.com/TovarishFin/vim-solidity) - For syntax keyword highlights.
 * [Solc-Select](https://github.com/crytic/solc-select) - Solc version manager to change according to each project. Since ALE uses the solc executable it will adjust to whichever solc-select version you are using and which pragma you declare. Uses Location List buffer.
-* [ALE](https://github.com/dense-analysis/ale/) - For linting at runtime with solhint and solc. Uses Location List buffer. 
-* [Prettier-Solidity](https://github.com/prettier-solidity/prettier-plugin-solidity) - For displaying format warnings. 
-* [Neoformat](https://github.com/sbdchd/neoformat) - For auto-fixing prettier's warnings.
-
+* [ALE](https://github.com/dense-analysis/ale/) - For linting at runtime with solhint and solc. Uses Location List buffer.  
+ 
 ## Installation 
 
 1. Before anything else, you must have Hardhat installed for Vimix to work. Read here for more info: https://hardhat.org/getting-started/
@@ -49,7 +45,6 @@ I have included my own configurations below for anyone to get started quickly.
 `npm install --save-dev hardhat`
 
 Make sure to also install shorthand **globally** (https://hardhat.org/guides/shorthand.html).
-
 
 2. Then install requirements with any vim Plugin manager. Using Plug:
 
@@ -60,20 +55,20 @@ Plug 'crytic/solc-select'
 
 Plug 'sbdchd/neoformat'
 
-Plug 'TovarishFin/vim-solidity'
 ```
 
 3. Install 
 
 `Plug '0xhyoga/vimix-solidity'`
 
-and enable ftplugin on .vimrc
+and put this in your .vimrc:
 
 `filetype plugin on`
 
+
 ## Configuration
 
-In project folder make sure to install prettier solidity plugin and to create a solhint.json file
+In Solidity project folder make sure to install prettier solidity plugin and to create a .solhint.json file
 
 `npm install --save-dev prettier prettier-plugin-solidity`
 
@@ -135,13 +130,10 @@ let g:ale_type_map = {'solhint': {'ES': 'W', 'E':'W'}, 'solc': {'W': 'E', 'WS': 
 
 let g:ale_sign_column_always = 1
 let g:ale_sign_offset = 1000000
-
 let g:ale_sign_error = '■'
-let g:ale_sign_info = '■'
+let g:ale_sign_info = 💡
 let g:ale_sign_warning = '■'
-
 highlight ALEWarningSign guifg=LightGoldenrod1
-
 let g:ale_use_global_executables = v:null
 let g:ale_virtualtext_cursor = 1
 let g:ale_warn_about_trailing_blank_lines = 1
@@ -149,16 +141,55 @@ let g:ale_warn_about_trailing_whitespace = 1
 let g:ale_sign_highlight_linenrs = 1
 
 "no go to previous error or warning
+
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 
 "no go to next error or warning
+
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-augroup quickfix
-  autocmd!
-  autocmd QuickFixCmdPost make nested :vert :botright copen 60
-augroup END
-
-"replace with own keybind  
-nmap <C-y> :Neoformat <CR>
 ```
+
+## Optional
+
+I use the following to automate some processes like auto-formatting and showing tags:
+
+* [Neoformat](https://github.com/sbdchd/neoformat) - For auto-fixing prettier-solidity warnings.
+* Ctags
+* Tagbar 
+
+### Ctags and Tagbar
+
+For universal CTags you can follow here for instructions https://github.com/universal-ctags/ctags
+
+Depending on your setup, you will need to create a .ctags file with the regex rules:
+
+```
+--langdef=Solidity                                                              
+
+--langmap=Solidity:.sol                                                         
+
+--regex-Solidity=/^contract[ \t]+([a-zA-Z0-9_]+)/\1/n,contract/                 
+
+--regex-Solidity=/[ \t]*constructor\(/Constructor/c,constructor/
+
+--regex-Solidity=/[ \t]*function[ \t]+([a-zA-Z0-9_]+)*\(/\1/f,function/
+
+--regex-Solidity=/[ \t]*event[ \t]+([a-zA-Z0-9_]+)*\(/\1/e,event/
+
+--regex-Solidity=/[ \t]*mapping[ \t]+\(([a-zA-Z0-9_]+)[ \t]*=>[ \t]*([a-zA-Z0-9_]+)\)[ \t]+([a-zA-Z0-9_]+)/\3 (\1=>\2)/m,mappin
+```
+
+If you are adding more rules, make sure to edit the ftplugin/solidity.vim file to add the rules:
+
+```
+let g:tagbar_type_solidity = {
+    \ 'ctagstype': 'solidity',
+    \ 'kinds' : [
+        \ 'n:Contract',
+        \ 'l:Libraries',
+        \ 'm:Modifiers',
+        \ 'c:Constructor',
+        \ 'f:Functions',
+    \ ]
+\ }
