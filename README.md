@@ -56,14 +56,12 @@ npm install --save-dev @nomiclabs/hardhat-waffle@^2.0.0 ethereum-waffle@^3.0.0 c
 
 Make sure to also install shorthand **globally** (https://hardhat.org/guides/shorthand.html).
 
-2. Then install requirements with any vim Plugin manager. Using Plug:
+2. Then install solc-select and ale with any vim Plugin manager. Using Plug:
 
 ```
 Plug 'dense-analysis/ale'
 
 Plug 'crytic/solc-select'
-
-Plug 'sbdchd/neoformat'
 
 ```
 
