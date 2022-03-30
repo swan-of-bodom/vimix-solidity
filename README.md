@@ -8,6 +8,12 @@ I have included my own configurations below for anyone to get started quickly.
 
 If you find any errors or anything to add please let me know! 
 
+## Requirements
+
+* [Hardhat](https://hardhat.org/) - To compile the whole project. The reason to use hardhat's compiler here is to be able to compile the whole project and not just the file with solc. Uses the quickfix buftype.
+* [Solc-Select](https://github.com/crytic/solc-select) - Solc version manager to change according to each project. Since ALE uses the solc executable it will adjust to whichever solc-select version you are using and which pragma you declare. Uses Location List buffer.
+* [ALE](https://github.com/dense-analysis/ale/) - For linting at runtime with solhint and solc. Uses Location List buffer.  
+
 ## Showcase 
 
 Fix all format errors automatically, show function tags, compile, test and coverage with Hardhat. All without leaving Vim!
@@ -35,11 +41,6 @@ Fix all format errors automatically, show function tags, compile, test and cover
 
 **Important**: Due to the way ALE works with Solc, it requires for .sol files to be saved BEFORE linting/compiling errors. To fix this, the ftplugin has an auto command which writes the file as you modify. This only enables it for solidity files.
 
-## Requirements
-
-* [Hardhat](https://hardhat.org/) - To compile the whole project. The reason to use hardhat's compiler here is to be able to compile the whole project and not just the file with solc. Uses the quickfix buftype.
-* [Solc-Select](https://github.com/crytic/solc-select) - Solc version manager to change according to each project. Since ALE uses the solc executable it will adjust to whichever solc-select version you are using and which pragma you declare. Uses Location List buffer.
-* [ALE](https://github.com/dense-analysis/ale/) - For linting at runtime with solhint and solc. Uses Location List buffer.  
  
 ## Installation 
 
@@ -180,8 +181,8 @@ Depending on your setup, you will need to create a .ctags file with the regex ru
 
 --regex-Solidity=/[ \t]*event[ \t]+([a-zA-Z0-9_]+)*\(/\1/e,event/
 
---regex-Solidity=/[ \t]*mapping[ \t]+\(([a-zA-Z0-9_]+)[ \t]*=>[ \t]*([a-zA-Z0-9_]+)\)[ \t]+([a-zA-Z0-9_]+)/\3 (\1=>\2)/m,mappin
-```
+--regex-Solidity=/[ \t]*mapping[ \t]+\(([a-zA-Z0-9_]+)[ \t]*=>[ \t]*([a-zA-Z0-9_]+)\)[ \t]+([a-zA-Z0-9_]+)/\3 (\1=>\2)/m,mapping
+ ```
 
 If you are adding more rules, make sure to edit the ftplugin/solidity.vim file to add the rules:
 
@@ -196,5 +197,6 @@ let g:tagbar_type_solidity = {
         \ 'f:Functions',
     \ ]
 \ }
+```
  
- Tagbar should automatically pick up the tags you have created :)
+ Tagbar should then automatically pick up the tags you have created :)
