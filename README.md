@@ -26,7 +26,7 @@ Fix all format errors automatically, show function tags, compile, test and cover
 
 - Compile the whole project with Hardhat without leaving Vim.
 
-- Runtime Solc compiler errors 🟥 and Solhint/Prettier syntax warnings 🟨. Scroll through each one with <C-j> and <C-k>
+- Runtime Solc compiler errors 🟥 and Solhint/Prettier syntax warnings 🟨.
 
 ![image](https://user-images.githubusercontent.com/97303883/160899340-825e77fa-3bfa-479c-a68e-68b58d394e03.png)
 ![image](https://user-images.githubusercontent.com/97303883/160895526-93f9706f-b293-49fd-8031-acd4ee4a508e.png)
