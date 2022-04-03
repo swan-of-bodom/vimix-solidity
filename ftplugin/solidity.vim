@@ -26,6 +26,8 @@ let g:tagbar_type_solidity = {
         \ 'm:Modifiers',
         \ 'c:Constructor',
         \ 'f:Functions',
+        \ 'e:Events',
+        \ 'r:Errors',
     \ ]
 \ }
 
