@@ -61,8 +61,6 @@ Make sure to also install shorthand **globally** (https://hardhat.org/guides/sho
 ```
 Plug 'dense-analysis/ale'
 
-Plug 'crytic/solc-select'
-
 ```
 
 3. Install 
